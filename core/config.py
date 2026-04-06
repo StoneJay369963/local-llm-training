@@ -340,11 +340,13 @@ class AppConfig(BaseSettings):
 
     def save(self, path: Path) -> None:
         """保存配置到文件"""
-        config_dict = self.model_dump(exclude_none=True, exclude={'version', 'name', 'environment'})
+        # 使用 mode='json' 确保所有值都是 JSON/YAML 原生类型
+        # 这会将枚举转为字符串，Path 转为字符串等
+        config_dict = self.model_dump(mode='json', exclude_none=True, exclude={'version', 'name', 'environment'})
 
         if path.suffix == '.yaml' or path.suffix == '.yml':
             with open(path, 'w', encoding='utf-8') as f:
-                yaml.dump(config_dict, f, default_flow_style=False, allow_unicode=True)
+                yaml.dump(config_dict, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
         else:
             with open(path, 'w', encoding='utf-8') as f:
                 json.dump(config_dict, f, indent=2, ensure_ascii=False)
@@ -352,14 +354,33 @@ class AppConfig(BaseSettings):
     @classmethod
     def load(cls, path: Path) -> 'AppConfig':
         """从文件加载配置"""
-        if path.suffix == '.yaml' or path.suffix == '.yml':
-            with open(path, 'r', encoding='utf-8') as f:
-                config_dict = yaml.safe_load(f)
-        else:
-            with open(path, 'r', encoding='utf-8') as f:
-                config_dict = json.load(f)
+        if not path.exists():
+            # 如果配置文件不存在，返回默认配置并提示用户
+            print(f"配置文件不存在: {path}")
+            print("将使用默认配置。你可以使用 'python -m cli.interface init' 生成新配置。")
+            return cls()
 
-        return cls(**config_dict)
+        try:
+            if path.suffix == '.yaml' or path.suffix == '.yml':
+                with open(path, 'r', encoding='utf-8') as f:
+                    config_dict = yaml.safe_load(f)
+            else:
+                with open(path, 'r', encoding='utf-8') as f:
+                    config_dict = json.load(f)
+
+            return cls(**config_dict)
+
+        except yaml.YAMLError as e:
+            # YAML 解析错误
+            print(f"YAML 解析错误: {e}")
+            print("配置文件格式可能已损坏。建议删除该文件后重新生成：")
+            print(f"  del {path}")
+            print("  python -m cli.interface init")
+            raise
+        except Exception as e:
+            print(f"配置加载失败: {e}")
+            print("将使用默认配置。")
+            return cls()
 
     def ensure_directories(self):
         """确保所有目录存在"""

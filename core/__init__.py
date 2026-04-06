@@ -10,6 +10,8 @@ from core.config import (
     DataFormat,
     HardwareConfig,
     ModelArchitectureConfig,
+    PretrainModelConfig,
+    FinetuneModelConfig,
     LoRAConfig,
     QuantizationConfig,
     OptimizerConfig,
@@ -48,6 +50,14 @@ from core.model_loader import (
     GGUFModelWrapper,
 )
 
+from core.evaluator import (
+    ModelEvaluator,
+)
+
+from core.exporter import (
+    ModelExporter,
+)
+
 __all__ = [
     # 配置
     "AppConfig",
@@ -57,6 +67,8 @@ __all__ = [
     "DataFormat",
     "HardwareConfig",
     "ModelArchitectureConfig",
+    "PretrainModelConfig",
+    "FinetuneModelConfig",
     "LoRAConfig",
     "QuantizationConfig",
     "OptimizerConfig",
@@ -85,4 +97,8 @@ __all__ = [
     "ModelFormat",
     "MODEL_FORMAT_INFO",
     "GGUFModelWrapper",
+    # 评估
+    "ModelEvaluator",
+    # 导出
+    "ModelExporter",
 ]

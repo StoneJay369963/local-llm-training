@@ -1,0 +1,92 @@
+# ============================================
+# LocalLLMTraining CPU 测试配置
+# RTX 5060 CUDA 不兼容时使用此配置
+# ============================================
+
+# 项目路径配置
+paths:
+  project_root: .
+  data_dir: ./data
+  model_dir: ./models
+  log_dir: ./logs
+  cache_dir: ./cache
+  output_dir: ./output
+
+# 硬件配置 - 使用 CPU
+hardware:
+  device: cpu
+  num_gpus: 0
+  gradient_checkpointing: false
+
+# 训练模式
+training:
+  mode: lora
+  output_dir: ./output
+  num_train_epochs: 1
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 1
+  learning_rate: 0.0002
+  weight_decay: 0.01
+  warmup_ratio: 0.03
+  lr_scheduler_type: cosine
+  logging_steps: 10
+  save_steps: 100
+  eval_steps: 100
+  save_total_limit: 3
+  fp16: false
+  bf16: false
+  max_grad_norm: 0.3
+
+# 数据配置
+dataset:
+  format: json
+  max_samples: 100
+  test_size: 0.1
+
+# 分词器配置
+tokenizer:
+  max_length: 256
+  padding: max_length
+  truncation: true
+  add_special_tokens: true
+
+# LoRA配置
+lora:
+  r: 8
+  lora_alpha: 16
+  lora_dropout: 0.05
+  target_modules:
+    - q_proj
+    - v_proj
+  bias: none
+  task_type: CAUSAL_LM
+
+# 量化配置
+quantization:
+  enable: false
+  load_in_4bit: false
+  load_in_8bit: false
+
+# 优化器配置
+optimizer:
+  learning_rate: 0.0002
+  weight_decay: 0.01
+  beta1: 0.9
+  beta2: 0.999
+
+# 微调模型配置 - 使用最小模型
+finetune_model:
+  name_or_path:microsoft/phi-2
+  trust_remote_code: true
+
+# 预训练模型配置
+model:
+  vocab_size: 51200
+  hidden_size: 256
+  num_hidden_layers: 2
+  num_attention_heads: 4
+  intermediate_size: 512
+
+# 云端训练配置 (不使用)
+cloud_training:
+  enable: false

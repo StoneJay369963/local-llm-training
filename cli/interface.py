@@ -653,12 +653,15 @@ class CLIInterface:
         """启动Web服务"""
         config = AppConfig.load(config_path)
         from api.server import create_app
+        import uvicorn
 
         app = create_app(config)
         print_info(f"启动Web服务: http://{host}:{port}")
+        print_info("API文档: http://{host}:{port}/docs")
         print_info("按 Ctrl+C 停止服务")
 
-        app.run(host=host, port=port, debug=False)
+        # 使用 uvicorn 运行 FastAPI
+        uvicorn.run(app, host=host, port=port)
 
 
 # ============ Click命令定义 ============

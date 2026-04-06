@@ -1,0 +1,115 @@
+paths:
+  project_root: D:\.openclaw\workspace\local-llm-training
+  data_dir: data
+  model_dir: models
+  log_dir: logs
+  cache_dir: cache
+  output_dir: output
+hardware:
+  device: cpu
+  num_workers: 4
+  pin_memory: true
+  persistent_workers: true
+  mixed_precision: true
+  gradient_checkpointing: true
+finetune_model:
+  name_or_path: D:\.openclaw\workspace\local-llm-training\models\QwenQwen3.5_4B
+  use_fast: true
+  trust_remote_code: false
+  use_cache: false
+lora:
+  enable: true
+  r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  bias: none
+  task_type: CAUSAL_LM
+quantization:
+  enable: true
+  load_in_4bit: true
+  load_in_8bit: false
+  bnb_4bit_compute_dtype: bfloat16
+  bnb_4bit_quant_type: nf4
+  bnb_4bit_use_double_quant: true
+optimizer:
+  optim: adamw_torch
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_epsilon: 1.0e-08
+  max_grad_norm: 1.0
+  lr_scheduler_type: cosine
+  warmup_ratio: 0.1
+  warmup_steps: 100
+training:
+  mode: lora
+  output_dir: output
+  num_train_epochs: 1
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 4
+  logging_steps: 10
+  save_steps: 500
+  eval_steps: 500
+  save_total_limit: 3
+  fp16: false
+  bf16: false
+  seed: 42
+  load_best_model_at_end: true
+  metric_for_best_model: eval_loss
+  greater_is_better: false
+  group_by_length: true
+  report_to:
+  - tensorboard
+dataset:
+  train_path: data\train.txt
+  eval_path: data\eval.txt
+  data_format: chatml
+  streaming: false
+  shuffle_buffer_size: 10000
+  overwrite_cache: false
+data_processing:
+  min_text_length: 100
+  max_text_length: 50000
+  remove_html: true
+  remove_urls: true
+  remove_emails: true
+  normalize_whitespace: true
+  lowercase: false
+  remove_special_chars: false
+  min_sentence_count: 3
+tokenizer:
+  type: bpe
+  max_length: 2048
+  padding: max_length
+  truncation: true
+  padding_side: right
+cloud_training:
+  enable: true
+  api:
+    provider: custom
+    api_key: KIhBwEQzA63UZPsp6hyJzZJv9wZIh2l8
+    model_name: mistral-large-latest
+    timeout: 60
+    max_retries: 3
+    temperature: 0.7
+    top_p: 0.9
+    max_tokens: 2048
+  enable_data_augmentation: true
+  enable_quality_filter: true
+  generate_synthetic_data: true
+  synthetic_data_ratio: 0.3
+inference:
+  max_new_tokens: 512
+  temperature: 0.7
+  top_p: 0.9
+  top_k: 50
+  repetition_penalty: 1.1
+  do_sample: true
+  num_beams: 1
