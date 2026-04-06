@@ -1,0 +1,92 @@
+# ============================================
+# LocalLLMTraining - 依赖清单
+# ============================================
+#
+# 安装顺序 (重要!):
+#   1. 先安装 torch (Windows用户建议使用预编译版本)
+#   2. 再安装其他依赖
+#
+# Windows 用户推荐:
+#   pip install torch --index-url https://download.pytorch.org/whl/cu118
+#   pip install -r requirements-core.txt
+#   pip install -r requirements-optional.txt
+#
+# ============================================
+
+# ============ 核心依赖 (必须) ============
+# 注意: Windows 用户请先单独安装 torch
+
+# 深度学习框架
+# Windows: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+# Linux/Mac: pip install torch torchvision torchaudio
+
+# Hugging Face生态
+transformers>=4.35.0
+datasets>=2.14.0
+tokenizers>=0.15.0
+accelerate>=0.25.0
+peft>=0.7.0
+trl>=0.7.0
+
+# 模型量化基础支持
+bitsandbytes>=0.41.0
+
+# FastAPI Web服务
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+python-multipart>=0.0.6
+jinja2>=3.1.0
+aiohttp>=3.9.0
+
+# 异步重试
+tenacity>=8.2.0
+
+# 数据处理
+numpy>=1.24.0
+pandas>=2.0.0
+pyarrow>=14.0.0
+
+# 日志和工具
+tqdm>=4.66.0
+pyyaml>=6.0
+loguru>=0.7.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# 交互式CLI
+click>=8.1.0
+inquirer>=3.1.0
+
+# ============ 可选依赖 ============
+
+# 训练监控 (可选)
+# tensorboard>=2.15.0
+# wandb>=0.16.0
+
+# 文本处理 (可选)
+# regex>=2023.10.0
+# tiktoken>=0.5.0
+# sentencepiece>=0.1.99
+
+# 优化器 (可选)
+# lion-pytorch>=0.1.0
+
+# 开发工具 (可选)
+# pytest>=7.4.0
+# black>=23.0.0
+# ruff>=0.1.0
+
+# ============ 量化格式支持 (可选) ============
+# 这些包安装较复杂，请根据需要单独安装
+
+# GPTQ量化支持 (推荐)
+# pip install auto-gptq optimum
+
+# GGUF/llama.cpp支持 (可选，用于加载.gguf格式模型)
+# Linux/Mac: pip install llama-cpp-python
+# Windows: 下载预编译 wheel: https://github.com/abetlen/llama-cpp-python/releases
+# 或使用: pip install llama-cpp-python --force-reinstall --no-cache-dir
+
+# AWQ量化支持 (可选，Windows安装困难)
+# pip install autoawq
+# Windows用户: 建议使用预编译版本或跳过此包

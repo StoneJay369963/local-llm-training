@@ -1,0 +1,138 @@
+[
+  {
+    "prompt": "请接着写:\n春天\n春天来了，万物复苏。小草从土壤中钻出来，露出嫩绿的头。桃花、杏花、梨花竞相开放，像给大地披上了一层五\n\n",
+    "completion": "彩的衣裳。燕子从南方飞回，在空中自由地翱翔。孩子们脱下厚厚的冬衣，跑到田野里放风筝，笑声回荡在春天的田野上。",
+    "metadata": {
+      "type": "chinese_continuation",
+      "source": "creative_writing.txt"
+    }
+  },
+  {
+    "prompt": "请接着写:\n夏天\n夏天是炎热的季节。知了在树上不停地叫着，好像在说\"热死了\"。荷花在池塘里开放，荷叶挨\n\n",
+    "completion": "挟一片，像一个个碧绿的圆盘。孩子们在河里游泳，有的在打水仗，有的在比赛游泳，玩得不亦乐乎。",
+    "metadata": {
+      "type": "chinese_continuation",
+      "source": "creative_writing.txt"
+    }
+  },
+  {
+    "prompt": "请接着写:\n秋天\n秋天是收获的季节。稻田里金黄色的稻穗沉甸甸地低着头，好像在向农民伯伯点头致谢。苹果\n\n",
+    "completion": "、梨、葡萄都成熟了，挂满了果树的枝头。秋风吹来，落叶在空中翩翩起舞，像一只只金色的蝴蝶。",
+    "metadata": {
+      "type": "chinese_continuation",
+      "source": "creative_writing.txt"
+    }
+  },
+  {
+    "prompt": "请接着写:\n冬天\n冬天是寒冷的季节。雪花纷纷扬扬地从天而降，给大地穿上了一件银白色的棉袄。孩子们在雪地\n\n",
+    "completion": "上堆雪人、打雪仗，玩得非常开心。腊梅迎着寒风开放，红的似火，白的如雪，给冬天增添了几分生机。",
+    "metadata": {
+      "type": "chinese_continuation",
+      "source": "creative_writing.txt"
+    }
+  },
+  {
+    "prompt": "请接着写:\n用户：你好，请问今天天气怎么样？\n助手：您\n\n",
+    "completion": "好！今天天气晴朗，气温25度，适合户外活动。",
+    "metadata": {
+      "type": "chinese_continuation",
+      "source": "daily_conversation.txt"
+    }
+  },
+  {
+    "prompt": "请接着写:\n用户：我最近心情不太好，你有什么建议吗？\n助手：我理解你的感受。可以试试：\n\n",
+    "completion": "1. 深呼吸放松；2. 听听喜欢的音乐；3. 和朋友聊聊天；4. 适当运动。",
+    "metadata": {
+      "type": "chinese_continuation",
+      "source": "daily_conversation.txt"
+    }
+  },
+  {
+    "prompt": "请接着写:\n用户：帮我写一封请假条\n助手：好的，这是一封标准请假条模板：\n尊敬的领导：\n因身\n\n",
+    "completion": "体不适，特向公司申请请假一天，望批准。\n请假人：XXX\n日期：2026年3月11日",
+    "metadata": {
+      "type": "chinese_continuation",
+      "source": "daily_conversation.txt"
+    }
+  },
+  {
+    "prompt": "请接着写:\n问题：什么是人工智能？\n回答：人工智能是计算机科学的一个分支，致力于创造\n\n",
+    "completion": "能够执行通常需要人类智能的任务的机器系统，如学习、推理、感知和语言理解。",
+    "metadata": {
+      "type": "chinese_continuation",
+      "source": "qa_pairs.txt"
+    }
+  },
+  {
+    "prompt": "请接着写:\n问题：机器学习和深度学习的区别是什么？\n回答：机器学习是人工智能的一个子集，而深度学习是机器学习\n\n",
+    "completion": "的一个更具体的分支。深度学习使用多层神经网络来模拟人脑的神经元结构，适合处理大规模、非结构化数据。",
+    "metadata": {
+      "type": "chinese_continuation",
+      "source": "qa_pairs.txt"
+    }
+  },
+  {
+    "prompt": "请接着写:\n问题：Python为什么在AI领域如此受欢迎？\n回答：Python在AI领域受欢迎的原因包括：语法简洁易\n\n",
+    "completion": "学、丰富的库生态系统（如TensorFlow、PyTorch）、强大的社区支持以及与多种数据格式的兼容性。",
+    "metadata": {
+      "type": "chinese_continuation",
+      "source": "qa_pairs.txt"
+    }
+  },
+  {
+    "prompt": "请接着写:\nPython是一种解释型、面向对象、动态数据类型的高级程序设计语言。\nPython的设\n\n",
+    "completion": "计哲学是\"优雅\"、\"明确\"、\"简单\"，因此Python语言易于学习、易于阅读、易于维护。",
+    "metadata": {
+      "type": "chinese_continuation",
+      "source": "tech_terms.txt"
+    }
+  },
+  {
+    "prompt": "请接着写:\n机器学习是人工智能的一个分支，它研究计算机如何模拟人类学习行\n\n",
+    "completion": "为。\n深度学习是机器学习的一个分支，主要基于多层神经网络模型。",
+    "metadata": {
+      "type": "chinese_continuation",
+      "source": "tech_terms.txt"
+    }
+  },
+  {
+    "prompt": "请接着写:\n自然语言处理是人工智能领域中与人类语言相互作用的分支\n\n",
+    "completion": "。\nNLP技术使得计算机能够理解、解释和生成人类语言。",
+    "metadata": {
+      "type": "chinese_continuation",
+      "source": "tech_terms.txt"
+    }
+  },
+  {
+    "prompt": "请接着写:\n计算机网络是计算机技术与通信技术相结合的产物\n\n",
+    "completion": "。\nTCP/IP协议是互联网的基础通信协议。",
+    "metadata": {
+      "type": "chinese_continuation",
+      "source": "tech_terms.txt"
+    }
+  },
+  {
+    "prompt": "请接着写:\n写一封道歉信\n尊敬的客户：\n由于我们工作失误，给您带来了不\n\n",
+    "completion": "便，我们深表歉意。我们将认真总结经验，避免类似问题再次发生。",
+    "metadata": {
+      "type": "chinese_continuation",
+      "source": "writing_examples.txt"
+    }
+  },
+  {
+    "prompt": "请接着写:\n写一封感谢信\n尊敬的老师：\n感谢您多年的辛勤教导，\n\n",
+    "completion": "您的耐心和智慧让我受益匪浅。我将永远铭记您的教诲。",
+    "metadata": {
+      "type": "chinese_continuation",
+      "source": "writing_examples.txt"
+    }
+  },
+  {
+    "prompt": "请接着写:\n写一封申请信\n尊敬的领导：\n我申请参加公司的培训项目，\n\n",
+    "completion": "希望能通过培训提升自己的专业能力，为公司做出更大贡献。",
+    "metadata": {
+      "type": "chinese_continuation",
+      "source": "writing_examples.txt"
+    }
+  }
+]

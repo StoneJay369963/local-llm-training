@@ -5,8 +5,8 @@ AIGC:
     Label: AIGC
     ProduceID: "00000000000000000000000000000000"
     PropagateID: "00000000000000000000000000000000"
-    ReservedCode1: 304502204610907a580ac15703582df31fad04064ae90a025a788cb9f10fa1e0c96ec70302210099da463c05f487075e0e3dde520aaef28492b06574973825d1e7bc331f68c5da
-    ReservedCode2: 304402203266dc17043b89d3c27b05b65d8a7d7144257a0508c88f6fe16969b9d9d0a1c0022075ba7729f46d3e2d578762e18b113f1876a4e8da61eb7a6c93cf52f4e8aa9d2b
+    ReservedCode1: 30450220145272ba4a455b516c96ef3b0be52b08a102fa14c2e4935ab7bdd2b877f3107c0221009487a1aad579ec9d5d51c1bbdb5db62c85319855b279db13642218cfd9927fb7
+    ReservedCode2: 3045022023aa2b3c5f76fe4bc3b66c331e80365accb23df9691f085e61099a0cf13d94bf022100fea1161beff09e381425e94d9c62ac080fd4af582b1a58013d74a0b6c5a4c907
 ---
 
 # LocalLLMTraining
@@ -106,6 +106,70 @@ local-llm-training/
 └── README.md
 ```
 
+## 安装指南
+
+### Windows 用户（推荐）
+
+**方式一：使用安装脚本**
+
+```powershell
+# 以管理员身份打开 PowerShell
+cd local-llm-training
+
+# 运行安装脚本
+powershell -ExecutionPolicy Bypass -File install.ps1
+```
+
+**方式二：手动安装**
+
+```powershell
+# 1. 首先安装 PyTorch (使用 CUDA 11.8 预编译版本)
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+# 2. 安装核心依赖
+pip install transformers datasets tokenizers accelerate peft trl
+pip install bitsandbytes
+pip install fastapi uvicorn[standard] python-multipart jinja2 aiohttp
+pip install tenacity numpy pandas pyarrow
+pip install tqdm pyyaml loguru
+pip install pydantic pydantic-settings
+pip install click inquirer
+
+# 3. 安装可选依赖 (推荐)
+pip install tensorboard wandb sentencepiece tiktoken regex
+
+# 4. 安装量化支持 (可选，如果不需要GGUF/GPTQ可以跳过)
+pip install auto-gptq optimum
+pip install llama-cpp-python --force-reinstall --no-cache-dir
+```
+
+### Linux / Mac 用户
+
+```bash
+# 克隆项目
+git clone https://github.com/your-repo/local-llm-training.git
+cd local-llm-training
+
+# 运行安装脚本
+bash install.sh
+
+# 或手动安装
+pip install torch torchvision torchaudio
+pip install -r requirements.txt
+```
+
+### 常见安装问题
+
+**Q: autoawq 安装失败？**
+> AWQ 在 Windows 上安装较复杂。如果不需要 AWQ 量化支持，可以跳过此包。
+
+**Q: llama-cpp-python 安装失败？**
+> Windows 用户建议使用预编译 wheel：
+> https://github.com/abetlen/llama-cpp-python/releases
+
+**Q: bitsandbytes 安装失败？**
+> 尝试安装特定版本：`pip install bitsandbytes-windows`
+
 ## 快速开始
 
 ### 方式一：交互式初始化（推荐）
@@ -114,9 +178,6 @@ local-llm-training/
 # 克隆项目
 git clone https://github.com/your-repo/local-llm-training.git
 cd local-llm-training
-
-# 安装依赖
-pip install -r requirements.txt
 
 # 运行交互式设置向导
 python -m cli.interface init
@@ -521,6 +582,3 @@ python -m cli.interface train config.yaml
 - [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory)
 - [LoRA: Low-Rank Adaptation](https://arxiv.org/abs/2106.09685)
 - [QLoRA: Efficient Finetuning](https://arxiv.org/abs/2305.14314)
-#   l o c a l - l l m - t r a i n i n g  
- #   l o c a l - l l m - t r a i n i n g  
- 

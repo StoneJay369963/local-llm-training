@@ -1,0 +1,111 @@
+# 本地LLM微调配置文件
+# 使用LoRA/QLoRA进行参数高效微调
+
+# 基础模型配置
+model:
+  name_or_path: "./models/pretrain_output"  # 本地预训练模型路径
+  # 或使用开源模型: "bigscience/bloom-560m", "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+  use_fast: true
+  trust_remote_code: false
+  use_cache: false
+
+# 分词器配置
+tokenizer:
+  padding_side: "right"
+  truncation_side: "right"
+  max_length: 2048
+
+# LoRA配置
+lora:
+  lora_rank: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  target_modules:
+    - "q_proj"
+    - "k_proj"
+    - "v_proj"
+    - "o_proj"
+    - "gate_proj"
+    - "up_proj"
+    - "down_proj"
+  bias: "none"
+  task_type: "CAUSAL_LM"
+
+# QLoRA量化配置
+quantization:
+  enable: true
+  load_in_4bit: true
+  load_in_8bit: false
+  bnb_4bit_compute_dtype: "bfloat16"
+  bnb_4bit_quant_type: "nf4"
+  bnb_4bit_use_double_quant: true
+
+# 训练配置
+training:
+  output_dir: "./models/finetune_output"
+  num_train_epochs: 3
+  per_device_train_batch_size: 4
+  per_device_eval_batch_size: 4
+  gradient_accumulation_steps: 8
+  eval_accumulation_steps: 8
+  learning_rate: 2.0e-4
+  weight_decay: 0.001
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_epsilon: 1.0e-8
+  max_grad_norm: 0.3
+  warmup_ratio: 0.03
+  warmup_steps: 100
+  logging_steps: 10
+  save_steps: 200
+  eval_steps: 200
+  save_total_limit: 5
+  fp16: false
+  bf16: true
+  gradient_checkpointing: true
+  optim: "paged_adamw_32bit"
+  lr_scheduler_type: "cosine"
+  group_by_length: true
+  packing: false
+  seed: 42
+
+# 数据集配置
+dataset:
+  train_path: "./data/finetune_train.json"
+  eval_path: "./data/finetune_eval.json"
+  format: "chatml"  # 支持: chatml, alpaca, sharegpt
+  max_samples: null  # null表示使用全部数据
+
+# 训练参数
+training_args:
+  do_train: true
+  do_eval: true
+  evaluation_strategy: "steps"
+  predict_with_generate: false
+  generation_max_length: 512
+  overwrite_output_dir: true
+  load_best_model_at_end: true
+  metric_for_best_model: "eval_loss"
+  greater_is_better: false
+
+# 硬件配置
+hardware:
+  device: "cuda"
+  num_workers: 2
+  pin_memory: true
+
+# 日志配置
+logging:
+  log_dir: "./logs/finetune"
+  use_wandb: false
+  wandb_project: "local-llm-finetune"
+  wandb_run_name: null
+
+# 推理配置
+inference:
+  checkpoint: "./models/finetune_output/checkpoint-best"
+  max_new_tokens: 512
+  temperature: 0.7
+  top_p: 0.9
+  top_k: 50
+  repetition_penalty: 1.1

@@ -1,0 +1,74 @@
+# 本地LLM预训练配置文件
+# 适用于60M-500M参数规模的小型模型
+
+# 模型架构配置
+model:
+  architecture: "transformer"
+  vocab_size: 32000
+  hidden_size: 512
+  num_hidden_layers: 8
+  num_attention_heads: 8
+  intermediate_size: 2048
+  max_position_embeddings: 2048
+  dropout: 0.1
+  activation: "gelu"
+  layer_norm_eps: 1.0e-6
+  tie_word_embeddings: false
+
+# 分词器配置
+tokenizer:
+  type: "bpe"
+  vocab_file: null  # 自动下载
+  max_length: 2048
+  padding: "max_length"
+  truncation: true
+
+# 训练配置
+training:
+  output_dir: "./models/pretrain_output"
+  num_train_epochs: 10
+  per_device_train_batch_size: 8
+  per_device_eval_batch_size: 8
+  gradient_accumulation_steps: 4
+  eval_accumulation_steps: 4
+  learning_rate: 1.0e-4
+  weight_decay: 0.01
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_epsilon: 1.0e-8
+  max_grad_norm: 1.0
+  warmup_ratio: 0.1
+  warmup_steps: 100
+  logging_steps: 10
+  save_steps: 500
+  eval_steps: 500
+  save_total_limit: 3
+  fp16: true
+  bf16: false
+  gradient_checkpointing: true
+  optim: "adamw_torch"
+  lr_scheduler_type: "cosine"
+  seed: 42
+  remove_unused_columns: false
+
+# 数据集配置
+dataset:
+  train_path: "./data/train.txt"
+  eval_path: "./data/eval.txt"
+  data_impl: "mmap"
+  streaming: false
+  shuffle_buffer_size: 10000
+  overwrite_cache: true
+
+# 硬件配置
+hardware:
+  device: "cuda"
+  num_workers: 4
+  pin_memory: true
+  persistent_workers: true
+
+# 日志配置
+logging:
+  log_dir: "./logs/pretrain"
+  project_name: "local-llm-pretrain"
+  experiment_name: "small-transformer-pretrain"
