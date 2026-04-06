@@ -13,7 +13,7 @@ hardware:
   mixed_precision: true
   gradient_checkpointing: true
 finetune_model:
-  name_or_path: D:\.openclaw\workspace\local-llm-training\models\QwenQwen3.5_4B
+  name_or_path: models/QwenQwen3.5_4B
   use_fast: true
   trust_remote_code: false
   use_cache: false

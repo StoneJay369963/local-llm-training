@@ -28,3 +28,123 @@
 {"text": "OpenClaw 的错误信息通常包含具体的错误代码和解决建议，帮助用户快速定位问题。"}
 {"text": "用户可以通过设置超时时间来控制 OpenClaw 任务的最长执行时间。"}
 {"text": "OpenClaw 会定期检查更新，用户可以使用更新命令来升级到最新版本。"}
+{"prompt": "如何启动 OpenClaw 网关？", "completion": "要启动 OpenClaw 网关，请执行命令：`openclaw gateway run`。您可以使用后台守护模式：`openclaw daemon start`。"}
+
+{"prompt": "如何查看网关状态？", "completion": "使用 `openclaw gateway status` 命令即可实时查看网关运行状态和连接情况。"}
+
+{"prompt": "如何在 OpenClaw 中查看配置？", "completion": "在 OpenClaw 中，使用 `openclaw config list` 查看所有配置参数。"}
+
+{"prompt": "OpenClaw 支持哪些聊天平台？", "completion": "OpenClaw 支持 WhatsApp、Telegram、Discord 等主流聊天平台，通过网关自动同步消息。"}
+
+{"prompt": "如何修改 OpenClaw 的 API 密钥？", "completion": "运行 `openclaw config set api.key YOUR_API_KEY` 来修改 API 密钥。"}
+
+{"prompt": "网关启动失败，如何诊断？", "completion": "使用 `openclaw gateway status` 查看状态，运行 `openclaw gateway logs` 查看详细日志。"}
+
+{"prompt": "OpenClaw 如何与 Claude 模型集成？", "completion": "在配置中选择 Claude 模型，API Key 已填入即可使用。"}
+
+{"prompt": "如何启用 OpenClaw 的插件？", "completion": "访问网页控制台，进入\"Skills\" 页面，点击\"Add Skill\"添加插件。"}
+
+{"prompt": "如何卸载 OpenClaw？", "completion": "使用 `npm uninstall -g @qingchencloud/openclaw-zh` 命令卸载。"}
+
+{"prompt": "如何重置 OpenClaw 数据？", "completion": "删除 `~/.openclaw` 目录或运行 `openclaw reset` 命令。"}
+
+{"prompt": "如何设置网关监听 LAN 网络？", "completion": "使用 `openclaw config set gateway.bind lan` 命令。"}
+
+{"prompt": "如何关闭设备认证？", "completion": "使用 `openclaw config set gateway.controlUi.dangerouslyDisableDeviceAuth true`。"}
+
+{"prompt": "如何启动 OpenClaw 守护进程？", "completion": "使用 `openclaw daemon start` 命令启动后台守护进程。"}
+
+{"prompt": "如何备份 OpenClaw 配置？", "completion": "使用 `openclaw config export` 导出配置文件。"}
+
+{"prompt": "OpenClaw 如何支持 Docker 部署？", "completion": "使用 `docker pull 1186258278/openclaw-zh:latest` 拉取镜像并部署。"}
+
+{"prompt": "如何查看 OpenClaw 更新日志？", "completion": "使用 `openclaw update` 命令检查并更新版本。"}
+
+{"prompt": "如何迁移 OpenClaw 配置到其他设备？", "completion": "导出配置后，在目标设备上导入相同配置文件。"}
+
+{"prompt": "如何配置 OpenClaw 自动备份？", "completion": "使用 `openclaw config set backup.enable true` 启用自动备份。"}
+
+{"prompt": "OpenClaw 如何与手机 ClawApp 集成？", "completion": "通过 WebSocket 代理实现手机与 OpenClaw 网关连接，端口为 3210。"}
+
+{"prompt": "如何配置 OpenClaw 的安全策略？", "completion": "进入控制台，选择\"Node Security\"页面，设置审批规则。"}
+
+{"prompt": "OpenClaw 启动后 Dashboard 显示英文？", "completion": "首次打开网页控制台，切换语言为简体中文。"}
+
+{"prompt": "OpenClaw 无法连接网关？", "completion": "检查防火墙是否阻止 18789 端口，使用 `openclaw config set gateway.bind lan`。"}
+
+{"prompt": "OpenClaw 安装失败？", "completion": "使用 npm 安装镜像源：`npm install -g @qingchencloud/openclaw-zh --registry=https://registry.npmmirror.com`。"}
+
+{"prompt": "网关启动后退出？", "completion": "确保启动命令包含 `openclaw gateway run` 或 `openclaw daemon start`。"}
+
+{"prompt": "OpenClaw 模型无响应？", "completion": "检查 baseURL 是否为 `http://localhost:11434/v1`。"}
+
+{"prompt": "OpenClaw 权限被拒绝？", "completion": "使用 `git config --global url.\"https://github.com/\".insteadOf ssh://git@github.com/`。"}
+
+{"prompt": "OpenClaw 更新后版本不匹配？", "completion": "运行 `npm install -g @qingchencloud/openclaw-zh@latest` 更新到最新版本。"}
+
+{"prompt": "OpenClaw 无法配对设备？", "completion": "运行 `openclaw devices list` 查看待批准设备 ID。"}
+
+{"prompt": "OpenClaw 镜像源版本落后？", "completion": "直接使用 npm 安装或等待镜像同步。"}
+
+{"prompt": "OpenClaw 容器启动失败？", "completion": "确保启动命令包含 `openclaw gateway run` 并正确配置端口映射。"}
+
+{"prompt": "如何安装 OpenClaw？", "completion": "运行 `npm install -g @qingchencloud/openclaw-zh@latest` 安装。"}
+
+{"prompt": "如何在 Windows 上安装 OpenClaw？", "completion": "运行 PowerShell 安装脚本或使用 Docker 部署。"}
+
+{"prompt": "如何在 Linux 上安装 OpenClaw？", "completion": "使用 `curl -fsSL -o install.sh 安装链接` 脚本安装。"}
+
+{"prompt": "如何一键部署 OpenClaw？", "completion": "使用 Docker Compose 或一键脚本：`curl -fsSL https://cdn.jsdelivr.net/gh/1186258278/OpenClawChineseTranslation@main/docker-deploy.sh`。"}
+
+{"prompt": "如何检查 OpenClaw 版本？", "completion": "运行 `openclaw --version` 查看版本信息。"}
+
+{"prompt": "如何初始化 OpenClaw 配置？", "completion": "运行 `openclaw onboard` 执行初始化向导。"}
+
+{"prompt": "如何查看 OpenClaw 所有命令？", "completion": "运行 `openclaw --help` 查看所有可用命令。"}
+
+{"prompt": "如何清理 OpenClaw 数据？", "completion": "使用 `rm -rf ~/.openclaw` 清理配置和缓存。"}
+
+{"prompt": "如何设置 OpenClaw 自动更新？", "completion": "在 `package.json` 中配置自动更新脚本。"}
+
+{"prompt": "如何查看 OpenClaw 日志？", "completion": "使用 `journalctl -u openclaw` 查看系统日志。"}
+
+{"prompt": "OpenClaw 安装后仍显示英文界面？", "completion": "卸载原版 `openclaw`，重装汉化版 `@qingchencloud/openclaw-zh`。"}
+
+{"prompt": "OpenClaw Dashboard 显示 token mismatch？", "completion": "使用 `openclaw dashboard` 命令带 Token 打开。"}
+
+{"prompt": "OpenClaw 需要配对设备？", "completion": "运行 `openclaw devices list` 查看待批准设备 ID。"}
+
+{"prompt": "OpenClaw 镜像拉取失败？", "completion": "使用国内 Docker Hub 镜像源：`docker pull 1186258278/openclaw-zh:latest`。"}
+
+{"prompt": "OpenClaw 无法访问内网？", "completion": "设置 `openclaw config set gateway.bind lan` 并重启。"}
+
+{"prompt": "OpenClaw 容器启动后立即退出？", "completion": "确保启动命令包含 `openclaw gateway run`。"}
+
+{"prompt": "OpenClaw 插件市场无法访问？", "completion": "使用代理或访问插件仓库。"}
+
+{"prompt": "OpenClaw 不支持的模型？", "completion": "OpenClaw 支持主流模型，Claude、GPT 等。"}
+
+{"prompt": "OpenClaw 需要付费吗？", "completion": "OpenClaw 本身免费，API Key 费用取决于模型使用。"}
+
+{"prompt": "OpenClaw 社区支持？", "completion": "加入 QQ 群 2000 人，QQ 群或 Discord 社区。"}
+
+{"prompt": "如何配置 OpenClaw 使用本地模型？", "completion": "选择\"Local Model\" 选项，设置 Ollama 地址 `http://localhost:11434`。"}
+
+{"prompt": "如何配置 OpenClaw 多模型？", "completion": "在配置中添加多个 API Key，选择使用。"}
+
+{"prompt": "如何配置 OpenClaw 多语言？", "completion": "在网页控制台选择语言：中文、英文、日语等。"}
+
+{"prompt": "如何配置 OpenClaw 自定义回复格式？", "completion": "在配置中添加 JSON 输出选项。"}
+
+{"prompt": "如何配置 OpenClaw 自动保存聊天记录？", "completion": "在配置中启用\"Save Chat History\"选项。"}
+
+{"prompt": "如何配置 OpenClaw 自定义温度？", "completion": "在 Modelfile 中设置 `PARAMETER temperature 0.7`。"}
+
+{"prompt": "如何配置 OpenClaw 自定义 Top_P？", "completion": "在 Modelfile 中设置 `PARAMETER top_p 0.9`。"}
+
+{"prompt": "如何配置 OpenClaw 自定义上下文长度？", "completion": "在 Modelfile 中设置 `PARAMETER num_ctx 4096`。"}
+
+{"prompt": "如何配置 OpenClaw 自定义停止词？", "completion": "在 Modelfile 中设置 `PARAMETER stop \"\\n<|end|>\"`。"}
+
+{"prompt": "如何配置 OpenClaw 自定义模型名称？", "completion": "在 Modelfile 中设置 `FROM llama3.2`。"}
+
